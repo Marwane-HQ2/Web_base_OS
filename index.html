@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30'><text x='0' y='25' font-size='25'>💾</text></svg>" type="image/svg+xml">
+    <link rel="stylesheet" href="style.css">
+    <title>My web OS</title> <!-- WEB BASED OPERATING SYSTEM -->
+</head>
+<body>
+    <!-- LA METTRE NE BOTTOM PLUS TARD -->
+    <div class="top-bar"> 
+        <p>Marwane's desktop</p>
+        <p id="time">time...</p>
+    </div>
+
+    <!-- WELCOME WINDOW -->
+
+    <div class="window" id="welcome" style="left: 150px; top: 75px; transform: none;">
+        <div class="header" id="welcomeheader">
+            wlcm.txt
+            <div>
+                <button class="header-button" id="close-button" onclick="closeWindow(document.getElementById('welcome'))"> </button>
+                <button class="header-button" id="red-button" onclick="closeWindow(document.getElementById('welcome'))"> </button>
+            </div>
+            </div>
+
+        <h1>Welcome back !</h1>
+        <p>It has been a while since last time you came... Nevermind, what should we do today ?
+        </p>
+    </div>
+
+    <!-- NOTEPAD -->
+
+    <div class="window" id="notepad" style="display: none; left: 740px; top: 200px; transform: none;">
+        <div class="header" id="notepadheader">
+            notepad
+            <div>
+                <button class="header-button" id="close-button" onclick="closeWindow(document.getElementById('notepad'))"> </button>
+                <button class="header-button" id="red-button" onclick="closeWindow(document.getElementById('notepad'))"> </button>
+            </div>
+        </div>
+        <!-- Gestion des notes ici -->
+        <div id="files">
+            <div>
+                <button onclick="createNote()">Add a note</button>
+            </div>
+            <p class="note-file" id="welcome-note" onclick="displayNote(notes[0])">Welcome note</p>
+            <p class="note-file" id="about-me-note" onclick="displayNote(notes[1])">About me</p>
+            <p class="note-file" id="css-note" onclick="displayNote(notes[2])">I used to f$:*^£% hate CSS</p>
+            <p class="note-file" id="fonts-note" onclick="displayNote(notes[3])">Fonts</p>
+            <p class="note-file" id="relax-note" onclick="displayNote(notes[7])">Relax</p>
+           
+            <p class="note-file" id="unt-1-note" onclick="displayNote(notes[4])">(Untitled-1)</p>
+            <p class="note-file" id="unt-2-note" onclick="displayNote(notes[5])">(Untitled-2)</p>
+            <p class="note-file" id="unt-3-note" onclick="displayNote(notes[6])">(Untitled-3)</p>
+        </div>
+        <div id="note"> 
+            <h1>Notepad</h1>
+            <p>A must-have tool on every device</p>
+            <!-- On arrive dans le contenu de la note -->
+            <div id="note-holder">
+                <h5 id="note-title"></h5>
+                <p contenteditable="true" id="note-content"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CREER NOTE WINDOW -->
+
+    <div class="window" id="notepad-create-note" style="display: none;">
+        <div class="header" id="notepad-create-noteheader">
+            create note
+            <div>
+                <button class="header-button" id="close-button" onclick="closeWindow(document.getElementById('notepad-create-note'))"> </button>
+                <button class="header-button" id="red-button" onclick="closeWindow(document.getElementById('notepad-create-note'))"> </button>
+            </div>
+        </div>
+        <h1>Create a new note</h1>
+        <form>
+            <div>
+                <label for="title">Title:</label>
+                <input required id="title" type="text" placeholder="The dream I made last night">
+            </div>
+            
+            <div>
+                <textarea required id="note-textarea" placeholder="I was in a lighthouse which was floating in the milky way..."></textarea>
+            </div>
+
+            <div id="button">
+                <button type="submit" onclick="saveNote(event)">Save the note</button>
+            </div>
+            
+        </form>
+    </div>
+
+    <!-- BROWSER WINDOW -->
+
+    <div class="window" id="browser" style="display: none;">
+        <div class="header" id="browserheader">
+                browser
+            <div>
+                <button class="header-button" id="close-button" onclick="closeWindow(document.getElementById('browser'))"> </button>
+                <button class="header-button" id="red-button" onclick="closeWindow(document.getElementById('browser'))"> </button>
+            </div>
+        </div>
+        <div id="div">
+            <div id="logo">
+                <img id="no-padding" src="assets/browser_img.png" alt="computer horizon" style="width: 15rem;;">
+            </div>
+            <div id="search-bar">
+                <input type="text" id="search" placeholder="Who is JSON ?">
+                <button onclick="search()">Search</button>
+            </div>
+        </div>        
+    </div>
+
+    <!-- PROJECTS WINDOW -->
+
+    <div class="window" id="project" style="display: none;left: 110px; top: 50px; transform: none;">
+        <div class="header" id="projectheader">
+            projects
+            <div>
+                <button class="header-button" id="close-button" onclick="closeWindow(document.getElementById('project'))"> </button>
+                <button class="header-button" id="red-button" onclick="closeWindow(document.getElementById('project'))"> </button>
+            </div>
+        </div>
+        <div id="description">
+            <h1>Projects</h1>
+            <p>Here I put projects I'm the most proud of, in case I have amnesia and I forget how cool I am.</p>
+        </div>
+        <div id="projects-view">
+            <!-- Une liste de divs avec un overflow-x en scroll -->
+            <div class="projects-cards">
+                <img src="assets/web_based_ide.png" alt="web_based_ide project" >
+                <h2 class="title-project">Web based IDE</h2>
+                <p>Making this project was wayyyy much easier than I thought, code is magic and you can build your own <a href="https://web-based-ide-xi.vercel.app/" target="_blank">tools</a></p>
+            </div>
+            <div class="projects-cards">
+                <img src="assets/web_os_thumb.png" alt="" >
+                <h2 class="title-project">This web based OS</h2>
+                <p>I wanted to make this OS a relaxing interface, something that brings nature in technology. I never thought pink and green would match <a href="" target="_blank">so well !</a></p>
+            </div>
+            <!-- <div class="projects-cards">
+                <img src="" alt="" >
+                <h2 class="title-project"></h2>
+                <p></p>
+            </div> -->
+        </div>
+    </div>
+
+    <!-- VAULT WINDOW -->
+
+    <div class="window" id="vault" style="display: none;">
+        <div class="header" id="vaultheader">
+            vault
+            <div>
+                <button class="header-button" id="close-button" onclick="closeWindow(document.getElementById('vault'))"> </button>
+                <button class="header-button" id="red-button" onclick="closeWindow(document.getElementById('vault'))"> </button>
+            </div>
+            </div>
+        <div id="vault-access">
+            <h4>Want to acces personnal files ?</h4>
+            <label>Enter code:</label>
+            <input id="input-code-pin" type="password" placeholder="Code is 1234 !" maxlength="4">
+            <button onclick="pinCodeCheck()">Submit</button>
+            <p id="pin-hint" style="visibility: hidden;">Here is a hint: it's 1234 !</p>
+        </div>
+        <div id="vault-inside" style="display: none;">
+           <p id="one">my personnal space...</p>
+           <p id="two">...it's somewhere I don't need to start my sentences with caps...</p>
+           <p id="three">...I like water...</p>
+           <p id="four">bruh</p>
+           <img src="assets/BLM.png" alt="BIPOC PRIDE" id="bipoc">
+           <img src="assets/boba.png" alt="boba" id="boba">
+           <img src="assets/riveter.png" alt="riveter" id="riveter">
+        </div>
+    </div>
+
+    <!-- ------------------------ -->
+    <!-- ----- APPLICATIONS ----- -->
+    <!-- ------------------------ -->
+
+    <!-- ENLEVER LA FONCTION POUR SELECTIONNER -->
+    <div id="desktop-apps">
+        <div class="application" id="notepad-app" onclick="handleIconTap(this, document.getElementById('notepad'))">
+            <img src="assets/notepad.png" alt="notepad icon">
+            <p>Notepad</p>
+        </div>
+        <div class="application" id="browser-app" onclick="handleIconTap(this, document.getElementById('browser'))">
+            <img src="assets/browser.png" alt="browser icon">
+            <p>Browser</p>
+        </div>
+        <!-- DEGAGER CA ET METTRE DES APP GENRE PROJET, ETC -->
+        <div class="application" id="project-app" onclick="handleIconTap(this, document.getElementById('project'))">
+            <img src="assets/projects.png" alt="project icon">
+            <p>Projects</p>
+        </div>
+        <div class="application" id="vault-app"  onclick="handleIconTap(this, document.getElementById('vault'))">
+            <img src="assets/vault.png" alt="vault icon">
+            <p>Vault</p>
+        </div>
+    </div>
+    <div id="desktop-apps-right">
+        <div class="application" id="welcome-app" onclick="handleIconTap(this, document.getElementById('welcome'))">
+            <img src="assets/welcome.png" alt="welcome icon">
+            <p>wlcm.txt</p>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
+
+<!-- 
+METTRE AU POINT L'APP MUSIQUE 
+ET UNE APPLICATION BIBLIOTHEQUE
+
+UN EXPLORATEUR DE FICHIERS 
+
+UN MOTEUR DE RECHERCHE
+-->
