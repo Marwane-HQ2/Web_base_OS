@@ -6,4 +6,4 @@ Feel free to look around and explore this OS. Have fun !
 ## Assets and programmation 🎨
 The background used is AI generated, images used in the Browser and the Vault are [Hack Club stickers](https://hackclub.com/stickers/), application icons are made by me !
 ## Demo 📼
-This project is available on Vercel !
+This project is available on [Vercel](https://web-base-os.vercel.app/) !
