@@ -26,7 +26,8 @@ body {
 
 
     height: 100vh;
-    width: 100vh;
+    width: 100%;
+
     margin: 0;
 
     overflow-x: hidden;
@@ -172,6 +173,11 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 300;
 }
 
+#desktop-apps-grid {
+    display: flex;
+    width: 100%;
+}
+
 #desktop-apps {
     width: fit-content;
     height: fit-content;
@@ -182,10 +188,7 @@ h1, h2, h3, h4, h5, h6 {
     padding-top: 3rem;
 }
 
-#desktop-apps-right {
-    position: absolute;
-    right: 0;
-
+#desktop-apps-second {
     width: fit-content;
     height: fit-content;
 
@@ -193,6 +196,21 @@ h1, h2, h3, h4, h5, h6 {
     
     padding: 1rem;
     padding-top: 3rem;
+}
+
+#desktop-apps-right {
+    justify-content: flex-end;
+    width: fit-content;
+    height: fit-content;
+
+    text-align: center;
+    
+    padding: 1rem;
+    padding-top: 3rem;
+}
+
+#desktop-apps > .application {
+    margin-left: 0;
 }
 
 .application {
@@ -208,11 +226,16 @@ h1, h2, h3, h4, h5, h6 {
 
     border-radius: 5px;
 
-    padding-bottom: 8px;
+    margin-left: 3rem;
+    margin-bottom: 4rem;
     overflow-x:visible;
 }
+
 .application img {
     grid-area: icon;
+
+    width: 64px;
+    height: 53px;
 
     user-select: none;
     -webkit-touch-callout: none;
@@ -222,6 +245,8 @@ h1, h2, h3, h4, h5, h6 {
     /* FONT */
     font-family: var(--jura-font-bold);
     font-weight: 700;
+    color: white;
+    text-shadow: black 2px 2px;
 
     grid-area: txt;
     margin: 0;
@@ -549,4 +574,39 @@ h1, h2, h3, h4, h5, h6 {
     top: 24%;
 
     transform: rotate(-15deg);
+}
+
+#piano {
+    display: flex;
+    border: var(--dark-green) 2px solid;
+    border-radius: 8px;
+}
+
+.tile {
+    background-color: var(--green);
+    margin: 0 2px;
+}
+
+#todoexe {
+    user-select: none;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    background-color: none;
+    outline: var(--dark-green) 1px solid;
+    margin: 0;
+}
+
+input[type="checkbox"]:checked {
+    border: none;
+    background-color: var(--dark-green);
+}
+
+input[type="checkbox"]:disabled:hover, .disabled:hover {
+    cursor: not-allowed;
+}
+
+.disabled {
+    opacity: 0.5;
 }
