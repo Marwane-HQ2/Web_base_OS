@@ -137,9 +137,15 @@
                 <p>Making this project was wayyyy much easier than I thought, code is magic and you can build your own <a href="https://web-based-ide-xi.vercel.app/" target="_blank">tools</a></p>
             </div>
             <div class="projects-cards">
-                <img src="assets/web_os_thumb.png" alt="" >
+                <img src="assets/web_os_thumb.png" alt="web_os_thumb project" >
                 <h2 class="title-project">This web based OS</h2>
                 <p>I wanted to make this OS a relaxing interface, something that brings nature in technology. I never thought pink and green would match <a href="" target="_blank">so well !</a></p>
+            </div>
+            <div class="projects-cards">
+                <img src="assets/spectrum.png" alt="spectrum project" >
+                <h2 class="title-project">Spectrum</h2>
+                <p>A hue game that took me 33 hours to code and still, I haven't motivated myself to add drag and drop tiles exchange. 
+                    Maybe in the future I will, but today, let's just<a href="https://play-spectrum.vercel.app/">play a level or two</a>.</p>
             </div>
             <!-- <div class="projects-cards">
                 <img src="" alt="" >
@@ -177,46 +183,98 @@
         </div>
     </div>
 
+
+
+    <!-- PIANO.EXE WINDOW -->
+    <div class="window" id="pianoexe" style="display: none;">
+        <div class="header" id="pianoexeheader">
+            piano.exe
+            <div>
+                <button class="header-button" id="close-button" onclick="temp = () => {closeWindow(document.getElementById('pianoexe')); removeKeysEventListener()}; temp()"> </button>
+                <button class="header-button" id="red-button" onclick="temp = () => {closeWindow(document.getElementById('pianoexe')); removeKeysEventListener()}; temp()"> </button>
+            </div>
+        </div>
+        <div>
+            <p>Use this piano or press Q to M keys to create your next masterpiece !</p>
+            <div id="piano"></div>
+        </div>
+    </div>
+
+    <!-- TODO.EXE WINDOW -->
+    <div class="window" id="todoexe" style="display: none;">
+        <div class="header" id="todoexeheader">
+            todo.exe
+            <div>
+                <button class="header-button" id="close-button" onclick="closeWindow(document.getElementById('todoexe'))"> </button>
+                <button class="header-button" id="red-button" onclick="closeWindow(document.getElementById('todoexe'))"> </button>
+            </div>
+        </div>
+        <div>
+            <p>Today's todo</p>
+            <div>
+                <input type="checkbox" checked id="a"> <label for="a">Wake up</label>
+            </div>
+            <div>
+                <input type="checkbox" id="n" class="disabled" disabled title="we don't need that !"> <label class="disabled" title="we don't need that !" for="n">Do something for attention</label>
+            </div>
+            <div>
+                <input type="checkbox" id="b"> <label for="b">Read a chapter or fifteen</label>
+            </div>
+            <div>
+                <input type="checkbox" checked id="c"> <label for="c">Check if stickers still stick</label>
+            </div>
+            <div>
+                <input type="checkbox" checked id="d"> <label for="d">Login on Triolingo</label>
+            </div>
+        </div>
+        <div>
+            
+        </div>
+    </div>
+
     <!-- ------------------------ -->
     <!-- ----- APPLICATIONS ----- -->
     <!-- ------------------------ -->
 
-    <!-- ENLEVER LA FONCTION POUR SELECTIONNER -->
-    <div id="desktop-apps">
-        <div class="application" id="notepad-app" onclick="handleIconTap(this, document.getElementById('notepad'))">
-            <img src="assets/notepad.png" alt="notepad icon">
-            <p>Notepad</p>
+    <div id="desktop-apps-grid">
+        <div id="desktop-apps">
+            <div class="application" id="notepad-app" onclick="handleIconTap(this, document.getElementById('notepad'))">
+                <img src="assets/notepad.png" alt="notepad icon">
+                <p>Notepad</p>
+            </div>
+            <div class="application" id="browser-app" onclick="handleIconTap(this, document.getElementById('browser'))">
+                <img src="assets/browser.png" alt="browser icon">
+                <p>Browser</p>
+            </div>
+            <!-- DEGAGER CA ET METTRE DES APP GENRE PROJET, ETC -->
+            <div class="application" id="project-app" onclick="handleIconTap(this, document.getElementById('project'))">
+                <img src="assets/projects.png" alt="project icon">
+                <p>Projects</p>
+            </div>
+            <div class="application" id="vault-app"  onclick="handleIconTap(this, document.getElementById('vault'))">
+                <img src="assets/vault.png" alt="vault icon">
+                <p>Vault</p>
+            </div>
         </div>
-        <div class="application" id="browser-app" onclick="handleIconTap(this, document.getElementById('browser'))">
-            <img src="assets/browser.png" alt="browser icon">
-            <p>Browser</p>
+        <div id="desktop-apps-second">
+            <div class="application" id="piano-app"  onclick="temp = () => {handleIconTap(this, document.getElementById('pianoexe')); addKeysEventListener()}; temp()">
+                <img src="assets/piano.png" alt="piano icon">
+                <p>piano.exe</p>
+            </div>
+            <div class="application" id="todo-app"  onclick="handleIconTap(this, document.getElementById('todoexe'))">
+                <img src="assets/todo.png" alt="todo icon">
+                <p>todo.exe</p>
+            </div>
         </div>
-        <!-- DEGAGER CA ET METTRE DES APP GENRE PROJET, ETC -->
-        <div class="application" id="project-app" onclick="handleIconTap(this, document.getElementById('project'))">
-            <img src="assets/projects.png" alt="project icon">
-            <p>Projects</p>
-        </div>
-        <div class="application" id="vault-app"  onclick="handleIconTap(this, document.getElementById('vault'))">
-            <img src="assets/vault.png" alt="vault icon">
-            <p>Vault</p>
+        <div id="desktop-apps-right">
+            <div class="application" id="welcome-app" onclick="handleIconTap(this, document.getElementById('welcome'))">
+                <img src="assets/welcome.png" alt="welcome icon">
+                <p>wlcm.txt</p>
+            </div>
         </div>
     </div>
-    <div id="desktop-apps-right">
-        <div class="application" id="welcome-app" onclick="handleIconTap(this, document.getElementById('welcome'))">
-            <img src="assets/welcome.png" alt="welcome icon">
-            <p>wlcm.txt</p>
-        </div>
-    </div>
-    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.9/Tone.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
-
-<!-- 
-METTRE AU POINT L'APP MUSIQUE 
-ET UNE APPLICATION BIBLIOTHEQUE
-
-UN EXPLORATEUR DE FICHIERS 
-
-UN MOTEUR DE RECHERCHE
--->
