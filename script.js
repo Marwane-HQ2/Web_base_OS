@@ -389,3 +389,122 @@ function change_note() {
     document.body.addEventListener("keydown", key_down)
     document.body.addEventListener("keyup", key_up)
 }
+
+let clock
+let hoursInput = document.getElementById("hours")
+let minutesInput = document.getElementById("minutes")
+
+hoursInput.addEventListener("input", () => {
+  if (hoursInput.value > 12) {
+    hoursInput.value = 12
+  }
+})
+
+minutesInput.addEventListener("input", () => {
+  if (minutesInput.value > 59) {
+    minutesInput.value = 59
+  }
+})
+
+function createFocusTimer () {
+  clearInterval(clock)
+  
+  let minutes = minutesInput.value
+  let hours = hoursInput.value
+  let seconds = "00"
+  
+  for (let b of document.querySelectorAll(".setting-timer")) {
+    b.style.display = "none"
+  }
+  document.getElementById("running-timer").style.display = ""
+  
+  document.getElementById("hour-timer").innerHTML = hours
+  document.getElementById("minute-timer").innerHTML = minutes
+  document.getElementById("second-timer").innerHTML = seconds
+
+  clock = setInterval(() => {
+    if (seconds > 0) {
+      seconds--
+    }
+    else if (minutes > 0) {
+      minutes--
+      seconds = 59
+    }
+    else if (hours > 0) {
+        hours--
+        minutes = 59
+        seconds = 59
+    }
+    else {
+      timeIsUp()
+      document.getElementById('time-is-up').showModal()
+      clearInterval(clock)
+    }
+    if (hours < 10 && hours.length < 1) {
+      document.getElementById("hour-timer").innerHTML = `0${hours}`
+    } else {
+      document.getElementById("hour-timer").innerHTML = hours
+    }
+    
+    if (minutes < 10 && minutes.length < 1) {
+      document.getElementById("minute-timer").innerHTML = `0${minutes}`
+    } else {
+      document.getElementById("minute-timer").innerHTML = minutes
+    }
+
+    if (seconds < 10) {
+      document.getElementById("second-timer").innerHTML = `0${seconds}`
+    } else {
+          document.getElementById("second-timer").innerHTML = seconds
+    }
+  }, 1000) // TOUTES LES 60 SECONDES = 60 000 millisecondes
+}
+
+function timeIsUp () {
+  console.log("Time's up !")
+  resetTimer()
+}
+
+function resetTimer () {
+  clearInterval(clock)
+  document.getElementById("running-timer").style.display = "none"
+  for (let b of document.querySelectorAll(".setting-timer")) {
+    b.style.display = ""
+  }
+}
+
+// CLOCK
+
+const secondHand = document.querySelector(".second-hand");
+const minHand = document.querySelector(".min-hand");
+const hourHand = document.querySelector(".hour-hand");
+
+function setDate() {
+ 	const currentTime = new Date();
+
+	const seconds = currentTime.getSeconds();
+	const secondDeg = ((seconds / 60) * 360) + 90;
+	secondHand.style.transform = `rotate(${secondDeg}deg)`;
+
+	const mins = currentTime.getMinutes();
+	const minsDeg = ((mins / 60) * 360) + 90;
+	minHand.style.transform = `rotate(${minsDeg}deg)`;
+
+	const hours = currentTime.getHours();
+	const hoursDeg = ((hours / 12) * 360) + 90;
+	hourHand.style.transform = `rotate(${hoursDeg}deg)`;
+
+	if(seconds == 0){
+		secondHand.style.transitionDuration = '0s';
+		minHand.style.transitionDuration = '0s';
+		hourHand.style.transitionDuration = '0s';
+	} else {
+		secondHand.style.transitionDuration = '0.05s';
+		minHand.style.transitionDuration = '0.05s';
+		hourHand.style.transitionDuration = '0.05s';
+	}
+	
+	requestAnimationFrame(setDate);
+}
+
+setDate()
