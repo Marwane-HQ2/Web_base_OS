@@ -26,8 +26,12 @@
             </div>
 
         <h1>Welcome back !</h1>
-        <p>It has been a while since last time you came... Nevermind, what should we do today ?
-        </p>
+        <p>It has been a while since last time you came... Nevermind, what should we do today ?</p>
+        <div id="buttons"> 
+            <button onclick="openWindow(document.getElementById('pianoexe'))">Play some piano</button>
+            <button onclick="openWindow(document.getElementById('todoexe'))">Stick to the plans</button>
+            <button onclick="openWindow(document.getElementById('browser'))">Feeling lucky ?</button>
+        </div>
     </div>
 
     <!-- NOTEPAD -->
@@ -209,28 +213,70 @@
                 <button class="header-button" id="red-button" onclick="closeWindow(document.getElementById('todoexe'))"> </button>
             </div>
         </div>
-        <div>
-            <p>Today's todo</p>
-            <div>
-                <input type="checkbox" checked id="a"> <label for="a">Wake up</label>
+
+        <div id="todo-window-content">
+            <div id="tasks">
+                <p>Today's todo list</p>
+                <div>
+                    <input type="checkbox" checked id="a"> <label for="a">Wake up</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="n" class="disabled" disabled title="we don't need that !"> <label class="disabled" title="we don't need that !" for="n">Do something for attention</label>
+                </div>
+                <div>
+                    <input type="checkbox" id="b"> <label for="b">Read a chapter or fifteen</label>
+                </div>
+                <div>
+                    <input type="checkbox" checked id="c"> <label for="c">Check if stickers still stick</label>
+                </div>
+                <div>
+                    <input type="checkbox" checked id="d"> <label for="d">Login on Triolingo</label>
+                </div>
             </div>
-            <div>
-                <input type="checkbox" id="n" class="disabled" disabled title="we don't need that !"> <label class="disabled" title="we don't need that !" for="n">Do something for attention</label>
+            <div id="focus-timer">
+                <div id="set-timer" class="setting-timer"> 
+                    <input type="number" value="01" id="hours" min="0" max="12">:<input type="number" value="30" id="minutes" min="1" max="59">
+                </div>
+                <div id="button-set-timer" style="padding: 0; margin: 0;" class="setting-timer">
+                        <button onclick="createFocusTimer()">Set the timer (HH/MM)</button>
+                </div>
+                
+                <div id="running-timer" style="display: none;">
+                    <h1>
+                        <span id="hour-timer">0</span> : <span id="minute-timer">0</span> : <span id="second-timer">0</span> 
+                    </h1>
+                    <button onclick="resetTimer()">Reset</button>
+                </div>
+                
+                    
             </div>
-            <div>
-                <input type="checkbox" id="b"> <label for="b">Read a chapter or fifteen</label>
+            <div id="quote">
+                <h1>We can !</h1>
             </div>
-            <div>
-                <input type="checkbox" checked id="c"> <label for="c">Check if stickers still stick</label>
+            <div id="clock-div">
+                <div id="clock">
+                    <div class="clock-face">
+                      <div class="hand hour-hand"></div>
+                      <div class="hand min-hand"></div>
+                      <div class="hand second-hand"></div>
+                    </div>
+                  </div>
             </div>
-            <div>
-                <input type="checkbox" checked id="d"> <label for="d">Login on Triolingo</label>
-            </div>
-        </div>
-        <div>
             
         </div>
     </div>
+
+    <dialog id="time-is-up">
+        <div id="time-is-up-header">
+            Bip bip !
+            <div>
+                <button class="header-button" onclick="document.getElementById('time-is-up').close()"> </button>
+            </div>
+        </div>
+        <div id="content">
+            <p>Time's up ! Let's do something else !</p>
+        </div>
+    </dialog>
 
     <!-- ------------------------ -->
     <!-- ----- APPLICATIONS ----- -->
