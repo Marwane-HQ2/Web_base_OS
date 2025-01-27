@@ -11,5 +11,7 @@ Web OS with notepad, browser, vault and projects app.
 ### 2.0.0
 Added piano.exe and todo.exe 
 Added changes on styles and icons.
+### 2.1.0
+Added more indications, added to todo.exe a clock and a timer.
 ## Demo 📼
 This project is available on [Vercel](https://web-base-os.vercel.app/) !
